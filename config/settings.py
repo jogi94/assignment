@@ -54,7 +54,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [str(BASE_DIR / "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -111,13 +111,19 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-
-STATIC_URL = 'static/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# STATIC
+# ------------------------------------------------------------------------------
+STATIC_ROOT = str(BASE_DIR / "staticfiles")
+STATIC_URL = "/static/"
+
+
+# MEDIA
+# ------------------------------------------------------------------------------
+MEDIA_ROOT = str(BASE_DIR / "media")
+MEDIA_URL = "/media/"
