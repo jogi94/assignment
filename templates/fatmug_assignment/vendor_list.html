@@ -1,0 +1,27 @@
+{% load render_table from django_tables2 %}
+{% load i18n %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vendor Listing</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="page-header">
+    <h1 class="page-title">{% trans "Vendor Listing" %}</h1>
+    <button><a href="{% url 'fatmug_assignment:vendor_create' %}">Add</a></button>
+    <div class="action-buttons">
+    </div>
+</div>
+
+<div class="page-body">
+    <div class="container-fluid">
+        <div class="card table-data">
+            <div class="table-responsive">
+                {% render_table table %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
