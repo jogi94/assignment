@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django_lifecycle import hook, LifecycleModelMixin
 from enumfields import EnumField
 
@@ -23,6 +24,19 @@ class Vendor(LifecycleModelMixin, models.Model):
     def generate_vender_code(self):
         self.vendor_code = f"VC_{self.pk}"
         self.save(update_fields=['vendor_code'])
+
+    @staticmethod
+    def get_create_url():
+        return reverse('fatmug_assignment:vendor_create')
+
+    def get_update_url(self):
+        return reverse('fatmug_assignment:vendor_update', args=(self.id,))
+
+    def get_absolute_url(self):
+        return reverse('fatmug_assignment:vendor_detail', args=(self.id,))
+
+    def get_delete_url(self):
+        return reverse('fatmug_assignment:vendor_delete', args=(self.id,))
 
 
 class PurchaseOrder(LifecycleModelMixin, models.Model):
