@@ -38,7 +38,11 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'django_tables2',
+]
 
 LOCAL_APPS = [
     'fatmug_assignment',
@@ -134,3 +138,7 @@ STATIC_URL = "/static/"
 # ------------------------------------------------------------------------------
 MEDIA_ROOT = str(BASE_DIR / "media")
 MEDIA_URL = "/media/"
+
+#django-crispy-forms
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
