@@ -7,16 +7,34 @@ from .models import PurchaseOrder, Vendor, HistoricalPerformance
 
 @admin.register(Vendor)
 class VendorAdmin(admin.ModelAdmin):
-    # list_display = ('po_number',)  # display the po_number field in the admin list view
-    pass
+    readonly_fields = ('vendor_code', 'on_time_delivery_rate', 'quality_rating_avg', 'average_response_time',
+                       'fulfillment_rate')
+    list_display = ('vendor_code', 'name', 'contact_details', 'address')
+    fields = (
+        'name',
+        'contact_details',
+        'address',
+        'vendor_code',
+        'on_time_delivery_rate',
+        'quality_rating_avg',
+        'average_response_time',
+        'fulfillment_rate',
+    )
 
 
 @admin.register(PurchaseOrder)
 class PurchaseOrderAdmin(admin.ModelAdmin):
-    # list_display = ('po_number',)  # display the po_number field in the admin list view
-    pass
-
-
-@admin.register(HistoricalPerformance)
-class HistoricalPerformanceAdmin(admin.ModelAdmin):
-    pass
+    readonly_fields = ('po_number',)
+    list_display = ('po_number', 'vendor', 'status')
+    fields = (
+        'po_number',
+        'vendor',
+        'status',
+        'order_date',
+        'delivery_date',
+        'items',
+        'quantity',
+        'quality_rating',
+        'issue_date',
+        'acknowledgment_date',
+    )
